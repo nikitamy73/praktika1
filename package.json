@@ -1,0 +1,36 @@
+{
+  "name": "nodejs-loginsystem",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jackyeh168/nodejs-loginSystem.git"
+  },
+  "author": "jackyeh168",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jackyeh168/nodejs-loginSystem/issues"
+  },
+  "homepage": "https://github.com/jackyeh168/nodejs-loginSystem#readme",
+  "dependencies": {
+    "bcrypt-nodejs": "^0.0.3",
+    "body-parser": "^1.20.4",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "~1.4.1",
+    "debug": "^2.6.9",
+    "ejs": "^3.1.10",
+    "express": "^4.22.1",
+    "express-session": "^1.13.0",
+    "morgan": "^1.10.1",
+    "mysql2": "^3.15.3",
+    "node-mysql": "*",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0",
+    "serve-favicon": "^2.5.1",
+    "session": "^0.1.0"
+  },
+  "description": ""
+}
