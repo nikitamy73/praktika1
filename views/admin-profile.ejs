@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Панель администратора</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        form { margin: 20px 0; padding: 20px; background: #f9f9f9; }
+        input { padding: 8px; margin: 5px; width: 200px; }
+        button { padding: 8px 15px; margin: 5px; cursor: pointer; }
+        .delete-btn { background: red; color: white; }
+        .update-btn { background: blue; color: white; }
+        .toggle-btn { background: orange; color: black; }
+    </style>
+</head>
+<body>
+    <h1>Панель администратора</h1>
+    <p>Вы вошли как: <strong><%= user.username %> (<%= user.role %>)</strong></p>
+    
+    <!-- Форма для удаления пользователя -->
+    <h2>Удалить пользователя</h2>
+    <form action="/delete-user" method="POST">
+        <label>ID пользователя:</label><br>
+        <input type="number" name="user_id" placeholder="Введите ID пользователя" required><br><br>
+        <button type="submit" class="delete-btn">Удалить пользователя</button>
+    </form>
+    
+    <!-- Форма для редактирования пользователя -->
+    <h2>Редактировать пользователя</h2>
+    <form action="/update-user" method="POST">
+        <label>ID пользователя:</label><br>
+        <input type="number" name="user_id" placeholder="Введите ID пользователя" required><br><br>
+        
+        <label>Новый логин (оставьте пустым, если не меняется):</label><br>
+        <input type="text" name="username" placeholder="Введите новый логин"><br><br>
+        
+        <label>Новый пароль (оставьте пустым, если не меняется):</label><br>
+        <input type="password" name="password" placeholder="Введите новый пароль"><br><br>
+        
+        <button type="submit" class="update-btn">Сохранить изменения</button>
+    </form>
+    
+    <!-- Форма для изменения активности пользователя -->
+    <h2>Изменить активность пользователя</h2>
+    <form action="/toggle-active" method="POST">
+        <label>ID пользователя:</label><br>
+        <input type="number" name="user_id" placeholder="Введите ID пользователя" required><br><br>
+        <button type="submit" class="toggle-btn">Изменить активность</button>
+        <p><em>Активный ↔ Неактивный</em></p>
+    </form>
+    
+    <!-- Таблица со всеми пользователями -->
+    <h2>Список всех пользователей</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Логин</th>
+                <th>Роль</th>
+                <th>Активен</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% users.forEach(function(u) { %>
+            <tr>
+                <td><%= u.id %></td>
+                <td><%= u.username %></td>
+                <td><%= u.role %></td>
+                <td><%= u.active == 1 ? 'Да' : 'Нет' %></td>
+            </tr>
+            <% }); %>
+        </tbody>
+    </table>
+    
+    <p><a href="/logout">Выйти из системы</a></p>
+</body>
+</html>
